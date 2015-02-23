@@ -1,0 +1,37 @@
+<head>
+  <title>aaaaa</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <div id="container">
+    <section id="display" style="width: 704px;">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:xlink="http://www.w3.org/1999/xlink" class="tributary_svg" width="677" height="533">
+        <g transform="translate(50,40)">
+          {{#each rows}}
+            {{> row x="0" y=offset data=this maxUnit=maxSum maxWidth=600}}
+          {{/each}}
+          <path transform="translate(0,-9)" class="domain" d="M-1,2H0V473H-1"></path>
+        </g>
+      </svg>
+    </section>
+  </div>
+</template>
+
+
+<template name="row">
+  <g transform="translate({{x}}, {{y}})">
+    {{#each data.values}}
+      <rect y="0" x={{offset ..}} height="60" width={{width ..}} style="fill: hsl({{color ..}}, 100%, 80%);"></rect>
+    {{/each}}
+    <g class="tick major" transform="translate(0,39.5)">
+      <text x={{maxWidth}} y="0" style="font-size:20px;text-anchor: end;font-family:helvetica;">
+        {{data.name}}
+      </text>
+    </g>
+  </g>
+</template>
+
